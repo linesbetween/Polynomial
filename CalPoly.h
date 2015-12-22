@@ -19,14 +19,14 @@ using namespace std;
 
 void searcher(Poly&, const Term term1);
                                     
-Poly CalPoly(Poly poly1, Poly poly2){
+Poly CalPoly(Poly poly1, Poly poly2, char func){
 	Poly result;
 	vector <Term>termVec1 = poly1.getTermVec();
 	vector<Term>::iterator iter1;
 	//Search through poly1's vector, for the same term in poly2
 	for (iter1 = termVec1.begin(); iter1 < termVec1.end(); iter1++){
 		Term found = searcher(poly2);
-		if (found.coef != 0 || found.letter != 0) {//if returned Term is not of 0 value
+		if (found.getCoef() != 0 || found.getLetter != 0) {//if returned Term is not of 0 value
 			result.insertTerm(found);// insert found term into result's vector
 			poly1.eraseTerm(iter1);// erase the term of same type from poly1's vector
 		}
@@ -48,7 +48,7 @@ Term searcher(Poly& poly2 /*vector <Term>::iterator &it*/){
 	Term found;
 
 	vector <Term>termVec2 = poly2.getTermVec();
-	vector <Term>::iterator iter2
+	vector <Term>::iterator iter2;
 	for (iter2 = termVec2.begin(); iter2< termVec2.end(); iter2++){
 		 //TODO
 		// Search through poly2' vector of term for the same term as passed-in term1

@@ -16,9 +16,11 @@
 #include <vector>
 using namespace std;
 
+
+
 class Poly{
 private:
-	vector <Term> termVec;
+	vector<Term>  termVec;
 	string input;
 
 public:
